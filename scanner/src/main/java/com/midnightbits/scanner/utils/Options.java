@@ -81,7 +81,7 @@ public final class Options extends EventEmitterOf.Impl<Settings.Event> {
         setAll(blockDistance, blockRadius, lifetime, showmessage, interestingIds, true);
     }
 
-    public void setAll(int blockDistance, int blockRadius, int lifetime, showmessage, Set<Id> interestingIds, boolean notify) {
+    public void setAll(int blockDistance, int blockRadius, int lifetime, int showmessage, Set<Id> interestingIds, boolean notify) {
         settings = new Settings(blockDistance, blockRadius, lifetime, showmessage, interestingIds);
         store();
         if (notify) {
