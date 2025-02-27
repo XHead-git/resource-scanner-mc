@@ -97,7 +97,7 @@ public final class Sonar {
                     pingEnd.apply();
                 return false;
             }
-            reflections.processSlice(waveConsumer, blocks);
+            reflections.processSlice(waveConsumer, blocks, this.showmessage);
             return true;
         });
 
@@ -147,7 +147,7 @@ public final class Sonar {
             return slices.hasNext();
         }
 
-        public void processSlice(ScanWaveConsumer waveConsumer, Set<Id> blocks) {
+        public void processSlice(ScanWaveConsumer waveConsumer, Set<Id> blocks, int showmessage) {
             final var slice = slices.next();
             final var dist = (int) Math.round((double) slice.distance() / ConeOfBlocks.Slicer.PRECISION);
             final Set<EchoState.Partial> echoes = new HashSet<>();
@@ -172,7 +172,7 @@ public final class Sonar {
                         .literal(MessageFormatter.format("> {}m ", dist).getMessage())
                         .append(info.getName().formattedGold());
                 
-                if(settings.showmessage == 1)
+                if(showmessage == 1)
                     client.sendPlayerMessage(message, false);
 
                 echoCache.computeIfAbsent(id, (k) -> {
