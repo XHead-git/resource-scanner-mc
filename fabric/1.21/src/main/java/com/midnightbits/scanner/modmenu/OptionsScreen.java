@@ -84,11 +84,11 @@ public class OptionsScreen extends SingleColumnOptions {
         };
     }
 
-    static Text makeShowMessageLabeler() {
+    static Function<Integer, Text> makeShowMessageLabeler() {
         return (showmessage) -> {
             if (showmessage == 0)
-                return "Disabled";
-            return "Enabled";
+                return translatableOption("Disabled", 0);
+            return translatableOption("Enabled", 1);
         };
     }
 
