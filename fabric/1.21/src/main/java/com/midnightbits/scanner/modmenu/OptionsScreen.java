@@ -38,7 +38,7 @@ public class OptionsScreen extends SingleColumnOptions {
             "width", 0, 100,
             Settings::blockRadius, Settings::withBlockRadius, makeRadiusLabeler());
     static final SettingSliderOption LIFETIME_OPTION = new SettingSliderOption(
-            "lifetime", 1000, 3600000,
+            "lifetime", 1000, 300000,
             Settings::lifetime, Settings::withLifetime,
             makeLifetimeLabeler());
     static final SettingSliderOption[] OPTIONS = new SettingSliderOption[] {
