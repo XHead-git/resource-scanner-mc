@@ -18,6 +18,8 @@
     "option.resource-scanner.lifetime/minutes": "%2$d min %1$d s",
     "option.resource-scanner.lifetime/hours": "%3$d h %2$d min %1$d s",
     "option.resource-scanner.interesting_ids": "Change scanned ore kinds",
+    "option.resource-scanner.showmessage/enabled": "Chat Messages Enabled",
+    "option.resource-scanner.showmessage/disabled": "Chat Messages Disabled",
 
     "screens.resource-scanner.ores": "Select ore kinds",
     "inventory.resource-scanner.ores": "Scannable ore kinds"
