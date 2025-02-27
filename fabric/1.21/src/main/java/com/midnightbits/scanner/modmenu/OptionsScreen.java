@@ -41,8 +41,12 @@ public class OptionsScreen extends SingleColumnOptions {
             "lifetime", 1000, 300000,
             Settings::lifetime, Settings::withLifetime,
             makeLifetimeLabeler());
+    static final SettingSliderOption SHOWMESSAGE_OPTION = new SettingSliderOption(
+            "showmessage", 0, 1,
+            Settings::showmessage, Settings::withShowmessage,
+            makeShowMessageLabeler());
     static final SettingSliderOption[] OPTIONS = new SettingSliderOption[] {
-            DISTANCE_OPTION, WIDTH_OPTION, LIFETIME_OPTION
+            DISTANCE_OPTION, WIDTH_OPTION, LIFETIME_OPTION, SHOWMESSAGE_OPTION
     };
 
     public static final String TAG = ScannerMod.MOD_ID;
@@ -57,9 +61,10 @@ public class OptionsScreen extends SingleColumnOptions {
         final var blockDistance = settings.blockDistance();
         final var blockRadius = settings.blockRadius();
         final var lifetime = settings.lifetime();
+        final var showmessage = settings.showmessage();
         final var interestingIds = settings.interestingIds();
 
-        this.settings = new Settings(blockDistance, blockRadius, lifetime, interestingIds);
+        this.settings = new Settings(blockDistance, blockRadius, lifetime, showmessage, interestingIds);
     }
 
     static String optionKey(String id) {
@@ -76,6 +81,14 @@ public class OptionsScreen extends SingleColumnOptions {
                 return translatableOption("width/zero", 1);
             final var width = radius * 2 + 1;
             return translatableOption("width/circle", width);
+        };
+    }
+
+    static Function<Integer, Text> makeShowMessageLabeler() {
+        return (showmessage) -> {
+            if (showmessage = 0)
+                return "Disabled";
+            return "Enabled";
         };
     }
 
@@ -144,9 +157,10 @@ public class OptionsScreen extends SingleColumnOptions {
         final var blockDistance = settings.blockDistance();
         final var blockRadius = settings.blockRadius();
         final var lifetime = settings.lifetime();
+        final var showmessage = settings.showmessage();
         final var interestingIds = settings.interestingIds();
 
-        Options.getInstance().setAll(blockDistance, blockRadius, lifetime, interestingIds);
+        Options.getInstance().setAll(blockDistance, blockRadius, lifetime, showmessage, interestingIds);
         super.removed();
     }
 
