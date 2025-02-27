@@ -72,6 +72,7 @@ jobs:
           path: ${{github.workspace}}/build/libs
 
       - name: Upload to modrinth
+        if: ${{ false }}
         run: python -m tools.ci minotaur send "${{github.workspace}}/build/libs"
         env:
           MODRINTH_TOKEN: ${{ secrets.MODRINTH_TOKEN }}
