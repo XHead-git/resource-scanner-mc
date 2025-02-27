@@ -37,8 +37,7 @@ public record Settings(int blockDistance, int blockRadius, int lifetime, int sho
             var ids = Arrays.stream(settings.interestingIds).map(Id::of).collect(Collectors.toSet());
             var lifetime = settings.lifetime == null ? Echoes.ECHO_LIFETIME
                     : (int) (settings.lifetime * 1000 + .5);
-            var showmessage = settings.showmessage == null ? Sonar.SHOW_MESSAGE : (int) (settings.showmessage);
-            return new Settings(settings.blockDistance, settings.blockRadius, lifetime, showmessage, ids);
+            return new Settings(settings.blockDistance, settings.blockRadius, lifetime, settings.showmessage, ids);
         } catch (JsonSyntaxException e) {
             return null;
         }
