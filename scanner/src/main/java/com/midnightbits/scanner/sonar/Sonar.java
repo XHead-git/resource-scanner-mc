@@ -131,7 +131,7 @@ public final class Sonar {
     }
 
     public static boolean getShowMessage() {
-        return (this.showmessage == 1);
+        return this.showmessage == 1;
     }
 
     private static final class Reflections {
