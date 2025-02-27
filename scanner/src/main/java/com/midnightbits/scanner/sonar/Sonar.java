@@ -25,7 +25,7 @@ import com.midnightbits.scanner.utils.ConeOfBlocks;
 public final class Sonar {
     public static final int BLOCK_RADIUS = 2;
     public static final int BLOCK_DISTANCE = 16;
-    public static int SHOW_MESSAGE = 1;
+    public static final int SHOW_MESSAGE = 1;
     public static Id[] INTERESTING_IDS = new Id[] {
             Id.ofVanilla("coal_ore"),
             Id.ofVanilla("deepslate_coal_ore"),
@@ -82,7 +82,6 @@ public final class Sonar {
         this.blocks = blocks;
         this.echoes.refresh(lifetime);
         this.showmessage = showmessage;
-        Sonar.SHOW_MESSAGE = showmessage;
     }
 
     public boolean sendPing(ClientCore client, SlicePacer pacer, ScanWaveConsumer waveConsumer,
@@ -132,6 +131,10 @@ public final class Sonar {
         return echoes.oldEchoes(client);
     }
 
+    public boolean getShowMessage() {
+        return (this.showmessage == 1);
+    }
+
     private static final class Reflections {
         private final ClientCore client;
         private final V3i center;
@@ -174,7 +177,7 @@ public final class Sonar {
                         .literal(MessageFormatter.format("> {}m ", dist).getMessage())
                         .append(info.getName().formattedGold());
                 
-                if(Sonar.SHOW_MESSAGE == 1)
+                if(Sonar.getShowMessage())
                     client.sendPlayerMessage(message, false);
 
                 echoCache.computeIfAbsent(id, (k) -> {
