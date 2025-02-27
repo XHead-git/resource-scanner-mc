@@ -47,6 +47,7 @@ public final class Sonar {
         this.blockDistance = blockDistance;
         this.blockRadius = blockRadius;
         this.showmessage = showmessage;
+        Sonar.SHOW_MESSAGE = showmessage;
         this.blocks = interestingIds;
         this.echoes = new Echoes(lifetime);
     }
@@ -81,6 +82,7 @@ public final class Sonar {
         this.blocks = blocks;
         this.echoes.refresh(lifetime);
         this.showmessage = showmessage;
+        Sonar.SHOW_MESSAGE = showmessage;
     }
 
     public boolean sendPing(ClientCore client, SlicePacer pacer, ScanWaveConsumer waveConsumer,
@@ -172,7 +174,7 @@ public final class Sonar {
                         .literal(MessageFormatter.format("> {}m ", dist).getMessage())
                         .append(info.getName().formattedGold());
                 
-                if(this.showmessage == 1)
+                if(Sonar.SHOW_MESSAGES == 1)
                     client.sendPlayerMessage(message, false);
 
                 echoCache.computeIfAbsent(id, (k) -> {
