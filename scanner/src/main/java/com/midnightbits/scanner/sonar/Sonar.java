@@ -165,7 +165,7 @@ public final class Sonar {
                 var message = Services.TEXT
                         .literal(MessageFormatter.format("> {}m ", dist).getMessage())
                         .append(info.getName().formattedGold());
-                client.sendPlayerMessage(message, false);
+                //client.sendPlayerMessage(message, false);
 
                 echoCache.computeIfAbsent(id, (k) -> {
                     var color = VANILLA;
