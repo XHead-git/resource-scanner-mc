@@ -25,7 +25,7 @@ import com.midnightbits.scanner.utils.ConeOfBlocks;
 public final class Sonar {
     public static final int BLOCK_RADIUS = 2;
     public static final int BLOCK_DISTANCE = 16;
-    public static final int SHOW_MESSAGE = 1;
+    public static int SHOW_MESSAGE = 1;
     public static Id[] INTERESTING_IDS = new Id[] {
             Id.ofVanilla("coal_ore"),
             Id.ofVanilla("deepslate_coal_ore"),
@@ -97,7 +97,7 @@ public final class Sonar {
                     pingEnd.apply();
                 return false;
             }
-            reflections.processSlice(waveConsumer, blocks, this.showmessage);
+            reflections.processSlice(waveConsumer, blocks);
             return true;
         });
 
@@ -147,7 +147,7 @@ public final class Sonar {
             return slices.hasNext();
         }
 
-        public void processSlice(ScanWaveConsumer waveConsumer, Set<Id> blocks, int showmessage) {
+        public void processSlice(ScanWaveConsumer waveConsumer, Set<Id> blocks) {
             final var slice = slices.next();
             final var dist = (int) Math.round((double) slice.distance() / ConeOfBlocks.Slicer.PRECISION);
             final Set<EchoState.Partial> echoes = new HashSet<>();
@@ -172,7 +172,7 @@ public final class Sonar {
                         .literal(MessageFormatter.format("> {}m ", dist).getMessage())
                         .append(info.getName().formattedGold());
                 
-                if(showmessage == 1)
+                if(Sonar.SHOW_MESSAGE == 1)
                     client.sendPlayerMessage(message, false);
 
                 echoCache.computeIfAbsent(id, (k) -> {
