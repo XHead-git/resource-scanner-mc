@@ -55,9 +55,9 @@ public class SonarTest {
 		SonarAnimation animation;
 		long then = Clock.currentTimeMillis();
 
-		Setup(int blockDistance, int blockRadius, int lifetime, Set<Id> blocks) {
+		/*Setup(int blockDistance, int blockRadius, int lifetime, Set<Id> blocks) {
 			this(new Settings(blockDistance, blockRadius, lifetime, blocks));
-		}
+		}*/
 
 		Setup(Settings settings) {
 			this.sonar = new Sonar(settings);
