@@ -25,7 +25,7 @@ import com.midnightbits.scanner.utils.ConeOfBlocks;
 public final class Sonar {
     public static final int BLOCK_RADIUS = 2;
     public static final int BLOCK_DISTANCE = 16;
-    public static final int SHOW_MESSAGE = 1;
+    public static int SHOW_MESSAGE = 1;
     public static Id[] INTERESTING_IDS = new Id[] {
             Id.ofVanilla("coal_ore"),
             Id.ofVanilla("deepslate_coal_ore"),
@@ -38,7 +38,7 @@ public final class Sonar {
     private Consumer<EchoState> echoConsumer;
     private int blockDistance;
     private int blockRadius;
-    private static int showMessage;
+    private int showmessage;
     private Set<Id> blocks;
 
     private static final Logger LOGGER = LoggerFactory.getLogger("Sonar");
@@ -46,7 +46,8 @@ public final class Sonar {
     public Sonar(int blockDistance, int blockRadius, int lifetime, int showmessage, Set<Id> interestingIds) {
         this.blockDistance = blockDistance;
         this.blockRadius = blockRadius;
-        this.showMessage = showmessage;
+        this.showmessage = showmessage;
+        this.SHOW_MESSAGE = showmessage;
         this.blocks = interestingIds;
         this.echoes = new Echoes(lifetime);
     }
@@ -80,7 +81,8 @@ public final class Sonar {
         this.blockRadius = blockRadius;
         this.blocks = blocks;
         this.echoes.refresh(lifetime);
-        this.showMessage = showmessage;
+        this.showmessage = showmessage;
+        this.SHOW_MESSAGE = showmessage;
     }
 
     public boolean sendPing(ClientCore client, SlicePacer pacer, ScanWaveConsumer waveConsumer,
@@ -130,10 +132,6 @@ public final class Sonar {
         return echoes.oldEchoes(client);
     }
 
-    public static boolean getShowMessage() {
-        return this.showMessage == 1;
-    }
-
     private static final class Reflections {
         private final ClientCore client;
         private final V3i center;
@@ -176,7 +174,7 @@ public final class Sonar {
                         .literal(MessageFormatter.format("> {}m ", dist).getMessage())
                         .append(info.getName().formattedGold());
                 
-                if(Sonar.getShowMessage())
+                if(Sonar.SHOW_MESSAGE == 1)
                     client.sendPlayerMessage(message, false);
 
                 echoCache.computeIfAbsent(id, (k) -> {
