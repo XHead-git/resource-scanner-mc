@@ -30,6 +30,7 @@ public class SonarTest {
 	public final static int TEST_BLOCK_DISTANCE = 32;
 	public final static int TEST_BLOCK_RADIUS = 4;
 	public final static int TEST_ECHO_LIFETIME = 10000;
+	public final static int TEST_SHOW_MESSAGE = 1;
 	public static Id[] TEST_INTERESTING_IDS = new Id[] {
 			Id.ofVanilla("coal_ore"),
 			Id.ofVanilla("deepslate_coal_ore"),
@@ -101,7 +102,7 @@ public class SonarTest {
 	}
 
 	public static Settings narrowSonar(int blockDistance, Set<Id> blocks) {
-		return new Settings(blockDistance, 0, TEST_ECHO_LIFETIME, blocks);
+		return new Settings(blockDistance, 0, TEST_ECHO_LIFETIME, TEST_SHOW_MESSAGE, blocks);
 	}
 
 	@Test
@@ -167,7 +168,7 @@ public class SonarTest {
 		clock.timeStamp = 0x123456;
 
 		final var core = new MockClientCore(new V3i(-60, -60, -51), 0f, 0f, MockWorld.TEST_WORLD);
-		final var setup = new Setup(TEST_BLOCK_DISTANCE, TEST_BLOCK_RADIUS, TEST_ECHO_LIFETIME,
+		final var setup = new Setup(TEST_BLOCK_DISTANCE, TEST_BLOCK_RADIUS, TEST_ECHO_LIFETIME, TEST_SHOW_MESSAGE,
 				Set.of(Id.ofVanilla("gold_ore")));
 
 		final var started = setup.sendPing(core);
@@ -230,7 +231,7 @@ public class SonarTest {
 		clock.timeStamp = 0x123456;
 
 		final var core = new MockClientCore(null, 0f, 0f, MockWorld.TEST_WORLD);
-		final var setup = new Setup(TEST_BLOCK_DISTANCE, TEST_BLOCK_RADIUS, TEST_ECHO_LIFETIME,
+		final var setup = new Setup(TEST_BLOCK_DISTANCE, TEST_BLOCK_RADIUS, TEST_ECHO_LIFETIME, TEST_SHOW_MESSAGE,
 				Set.of(Id.ofVanilla("gold_ore")));
 
 		Assertions.assertFalse(setup.sendPing(core));
@@ -249,7 +250,7 @@ public class SonarTest {
 		clock.timeStamp = 0x123456;
 
 		final var core = new MockClientCore(new V3i(-60, -60, -51), 0f, 0f, null);
-		final var setup = new Setup(TEST_BLOCK_DISTANCE, TEST_BLOCK_RADIUS, TEST_ECHO_LIFETIME,
+		final var setup = new Setup(TEST_BLOCK_DISTANCE, TEST_BLOCK_RADIUS, TEST_ECHO_LIFETIME, TEST_SHOW_MESSAGE,
 				Set.of(Id.ofVanilla("gold_ore")));
 
 		Assertions.assertTrue(setup.sendPing(core));
@@ -269,7 +270,7 @@ public class SonarTest {
 
 		final var core1 = new MockClientCore(new V3i(-60, -60, -51), 0f, 0f, MockWorld.TEST_WORLD);
 		final var core2 = new MockClientCore(new V3i(-60, -60, -51), 0f, 0f, null);
-		final var setup = new Setup(TEST_BLOCK_DISTANCE, TEST_BLOCK_RADIUS, TEST_ECHO_LIFETIME,
+		final var setup = new Setup(TEST_BLOCK_DISTANCE, TEST_BLOCK_RADIUS, TEST_ECHO_LIFETIME, TEST_SHOW_MESSAGE,
 				Set.of(Id.ofVanilla("gold_ore")));
 
 		Assertions.assertTrue(setup.sendPing(core1));
