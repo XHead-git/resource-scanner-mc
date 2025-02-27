@@ -38,7 +38,7 @@ public final class Sonar {
     private Consumer<EchoState> echoConsumer;
     private int blockDistance;
     private int blockRadius;
-    private int showmessage;
+    private static int showmessage;
     private Set<Id> blocks;
 
     private static final Logger LOGGER = LoggerFactory.getLogger("Sonar");
