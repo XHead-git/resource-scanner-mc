@@ -38,7 +38,7 @@ public final class Sonar {
     private Consumer<EchoState> echoConsumer;
     private int blockDistance;
     private int blockRadius;
-    private static int showmessage;
+    private static int showMessage;
     private Set<Id> blocks;
 
     private static final Logger LOGGER = LoggerFactory.getLogger("Sonar");
@@ -46,7 +46,7 @@ public final class Sonar {
     public Sonar(int blockDistance, int blockRadius, int lifetime, int showmessage, Set<Id> interestingIds) {
         this.blockDistance = blockDistance;
         this.blockRadius = blockRadius;
-        this.showmessage = showmessage;
+        this.showMessage = showmessage;
         this.blocks = interestingIds;
         this.echoes = new Echoes(lifetime);
     }
@@ -80,7 +80,7 @@ public final class Sonar {
         this.blockRadius = blockRadius;
         this.blocks = blocks;
         this.echoes.refresh(lifetime);
-        this.showmessage = showmessage;
+        this.showMessage = showmessage;
     }
 
     public boolean sendPing(ClientCore client, SlicePacer pacer, ScanWaveConsumer waveConsumer,
@@ -131,7 +131,7 @@ public final class Sonar {
     }
 
     public static boolean getShowMessage() {
-        return this.showmessage == 1;
+        return this.showMessage == 1;
     }
 
     private static final class Reflections {
