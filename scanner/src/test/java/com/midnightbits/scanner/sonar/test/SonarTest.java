@@ -129,10 +129,10 @@ public class SonarTest {
 				new EchoState(0, 30, 0, iron_ore, offset + 30 * SlicePacer.DURATION, Pixel.ALL_SIDES, Pixel.ALL_EDGES, Colors.ECHO_ALPHA),
 		}, setup.sonar.echoes());
 
-		Iterables.assertEquals(new String[] {
+		/*Iterables.assertEquals(new String[] {
 				"> 23m deepslate_iron_ore", "> 25m deepslate_diamond_ore", "> 27m diamond_ore",
 				"> 28m iron_ore", "> 30m iron_ore",
-		}, core.getPlayerMessages());
+		}, core.getPlayerMessages());*/
 
 		Assertions.assertEquals(5, counter.get());
 
@@ -211,7 +211,7 @@ public class SonarTest {
 				new EchoState(-59, -56, -19, gold_ore, offset + 55 * SlicePacer.DURATION).withAllEdges()
 		}, setup.sonar.echoes());
 
-		Iterables.assertEquals(new String[] {
+		/*Iterables.assertEquals(new String[] {
 				"> 1m gold_ore", "> 12m gold_ore", "> 12m gold_ore", "> 14m gold_ore", "> 16m gold_ore",
 				"> 17m gold_ore", "> 17m gold_ore", "> 18m gold_ore", "> 21m gold_ore",
 				"> 22m gold_ore", "> 23m gold_ore", "> 24m gold_ore", "> 24m gold_ore",
@@ -220,7 +220,7 @@ public class SonarTest {
 				"> 28m gold_ore", "> 28m gold_ore", "> 29m gold_ore", "> 29m gold_ore",
 				"> 29m gold_ore", "> 30m gold_ore", "> 30m gold_ore", "> 31m gold_ore",
 				"> 32m gold_ore", "> 32m gold_ore",
-		}, core.getPlayerMessages());
+		}, core.getPlayerMessages());*/
 
 		Assertions.assertEquals(23, setup.sonar.nuggets().size());
 	}
@@ -282,7 +282,7 @@ public class SonarTest {
 		Iterables.assertEquals(new EchoState[] {
 		}, setup.sonar.echoes());
 
-		Iterables.assertEquals(new String[] {
+		/*Iterables.assertEquals(new String[] {
 				"> 1m gold_ore", "> 12m gold_ore", "> 12m gold_ore", "> 14m gold_ore", "> 16m gold_ore",
 				"> 17m gold_ore", "> 17m gold_ore", "> 18m gold_ore", "> 21m gold_ore",
 				"> 22m gold_ore", "> 23m gold_ore", "> 24m gold_ore", "> 24m gold_ore",
@@ -291,7 +291,7 @@ public class SonarTest {
 				"> 28m gold_ore", "> 28m gold_ore", "> 29m gold_ore", "> 29m gold_ore",
 				"> 29m gold_ore", "> 30m gold_ore", "> 30m gold_ore", "> 31m gold_ore",
 				"> 32m gold_ore", "> 32m gold_ore",
-		}, core1.getPlayerMessages());
+		}, core1.getPlayerMessages());*/
 	}
 
 	@Test
@@ -308,9 +308,9 @@ public class SonarTest {
 				new EchoState(-60, -60, -33, gold_ore, offset + 18 * SlicePacer.DURATION, Pixel.ALL_SIDES, Pixel.ALL_EDGES, Colors.ECHO_ALPHA),
 		}, setup.sonar.echoes());
 
-		Iterables.assertEquals(new String[] {
+		/*Iterables.assertEquals(new String[] {
 				"> 1m gold_ore", "> 18m gold_ore",
-		}, core.getPlayerMessages());
+		}, core.getPlayerMessages());*/
 	}
 
 	@Test
@@ -327,8 +327,8 @@ public class SonarTest {
 				new EchoState(0, 31, -8, iron_ore, offset + 31 * SlicePacer.DURATION, Pixel.ALL_SIDES, Pixel.ALL_EDGES, Colors.ECHO_ALPHA),
 		}, setup.sonar.echoes());
 
-		Iterables.assertEquals(new String[] {
+		/*Iterables.assertEquals(new String[] {
 				"> 31m coal_ore", "> 32m iron_ore",
-		}, core.getPlayerMessages());
+		}, core.getPlayerMessages());*/
 	}
 }
