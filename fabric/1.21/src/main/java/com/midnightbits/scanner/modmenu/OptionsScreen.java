@@ -84,7 +84,7 @@ public class OptionsScreen extends SingleColumnOptions {
         };
     }
 
-    static Function<Integer, Text> makeShowMessageLabeler() {
+    static Text makeShowMessageLabeler() {
         return (showmessage) -> {
             if (showmessage == 0)
                 return "Disabled";
