@@ -47,7 +47,6 @@ public final class Sonar {
         this.blockDistance = blockDistance;
         this.blockRadius = blockRadius;
         this.showmessage = showmessage;
-        Sonar.SHOW_MESSAGE = showmessage;
         this.blocks = interestingIds;
         this.echoes = new Echoes(lifetime);
     }
@@ -131,7 +130,7 @@ public final class Sonar {
         return echoes.oldEchoes(client);
     }
 
-    public boolean getShowMessage() {
+    public static boolean getShowMessage() {
         return (this.showmessage == 1);
     }
 
