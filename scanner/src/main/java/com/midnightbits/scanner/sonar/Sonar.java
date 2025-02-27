@@ -38,7 +38,6 @@ public final class Sonar {
     private Consumer<EchoState> echoConsumer;
     private int blockDistance;
     private int blockRadius;
-    private int showmessage;
     private Set<Id> blocks;
 
     private static final Logger LOGGER = LoggerFactory.getLogger("Sonar");
@@ -46,7 +45,6 @@ public final class Sonar {
     public Sonar(int blockDistance, int blockRadius, int lifetime, int showmessage, Set<Id> interestingIds) {
         this.blockDistance = blockDistance;
         this.blockRadius = blockRadius;
-        this.showmessage = showmessage;
         this.SHOW_MESSAGE = showmessage;
         this.blocks = interestingIds;
         this.echoes = new Echoes(lifetime);
@@ -81,7 +79,6 @@ public final class Sonar {
         this.blockRadius = blockRadius;
         this.blocks = blocks;
         this.echoes.refresh(lifetime);
-        this.showmessage = showmessage;
         this.SHOW_MESSAGE = showmessage;
     }
 
