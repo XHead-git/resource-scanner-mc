@@ -25,6 +25,7 @@ import com.midnightbits.scanner.utils.ConeOfBlocks;
 public final class Sonar {
     public static final int BLOCK_RADIUS = 2;
     public static final int BLOCK_DISTANCE = 16;
+    public static final int SHOW_MESSAGE = 1;
     public static Id[] INTERESTING_IDS = new Id[] {
             Id.ofVanilla("coal_ore"),
             Id.ofVanilla("deepslate_coal_ore"),
@@ -37,13 +38,15 @@ public final class Sonar {
     private Consumer<EchoState> echoConsumer;
     private int blockDistance;
     private int blockRadius;
+    private int showmessage;
     private Set<Id> blocks;
 
     private static final Logger LOGGER = LoggerFactory.getLogger("Sonar");
 
-    public Sonar(int blockDistance, int blockRadius, int lifetime, Set<Id> interestingIds) {
+    public Sonar(int blockDistance, int blockRadius, int lifetime, int showmessage, Set<Id> interestingIds) {
         this.blockDistance = blockDistance;
         this.blockRadius = blockRadius;
+        this.showmessage = showmessage;
         this.blocks = interestingIds;
         this.echoes = new Echoes(lifetime);
     }
@@ -52,11 +55,12 @@ public final class Sonar {
         this(settings.blockDistance(),
                 settings.blockRadius(),
                 settings.lifetime(),
+                settings.showmessage(),
                 settings.interestingIds());
     }
 
     public Sonar() {
-        this(BLOCK_DISTANCE, BLOCK_RADIUS, Echoes.ECHO_LIFETIME, Set.of(INTERESTING_IDS));
+        this(BLOCK_DISTANCE, BLOCK_RADIUS, Echoes.ECHO_LIFETIME, SHOW_MESSAGE, Set.of(INTERESTING_IDS));
     }
 
     public void setEchoConsumer(@Nullable Consumer<EchoState> echoConsumer) {
@@ -67,14 +71,16 @@ public final class Sonar {
         refresh(settings.blockDistance(),
                 settings.blockRadius(),
                 settings.lifetime(),
+                settings.showmessage(),
                 settings.interestingIds());
     }
 
-    public void refresh(int blockDistance, int blockRadius, int lifetime, Set<Id> blocks) {
+    public void refresh(int blockDistance, int blockRadius, int lifetime, int showmessage, Set<Id> blocks) {
         this.blockDistance = blockDistance;
         this.blockRadius = blockRadius;
         this.blocks = blocks;
         this.echoes.refresh(lifetime);
+        this.showmessage = showmessage;
     }
 
     public boolean sendPing(ClientCore client, SlicePacer pacer, ScanWaveConsumer waveConsumer,
@@ -165,7 +171,9 @@ public final class Sonar {
                 var message = Services.TEXT
                         .literal(MessageFormatter.format("> {}m ", dist).getMessage())
                         .append(info.getName().formattedGold());
-                //client.sendPlayerMessage(message, false);
+                
+                if(showmessage == 1)
+                    client.sendPlayerMessage(message, false);
 
                 echoCache.computeIfAbsent(id, (k) -> {
                     var color = VANILLA;
