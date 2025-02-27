@@ -25,7 +25,7 @@ import com.midnightbits.scanner.utils.ConeOfBlocks;
 public final class Sonar {
     public static final int BLOCK_RADIUS = 2;
     public static final int BLOCK_DISTANCE = 16;
-    public static final int SHOW_MESSAGE = 1;
+    public static int SHOW_MESSAGE = 1;
     public static Id[] INTERESTING_IDS = new Id[] {
             Id.ofVanilla("coal_ore"),
             Id.ofVanilla("deepslate_coal_ore"),
