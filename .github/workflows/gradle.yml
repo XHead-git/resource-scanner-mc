@@ -8,7 +8,7 @@ on:
   workflow_dispatch:
 
 env:
-  RELEASE: ${{ github.event_name == 'push' && github.ref_type == 'tag' && startsWith(github.ref_name, 'v') }}
+  RELEASE: ${{1 == 1}}
 
 jobs:
   build:
