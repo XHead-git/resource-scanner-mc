@@ -172,7 +172,7 @@ public final class Sonar {
                         .literal(MessageFormatter.format("> {}m ", dist).getMessage())
                         .append(info.getName().formattedGold());
                 
-                if(settings.showmessage() == 1)
+                if(settings.showmessage == 1)
                     client.sendPlayerMessage(message, false);
 
                 echoCache.computeIfAbsent(id, (k) -> {
