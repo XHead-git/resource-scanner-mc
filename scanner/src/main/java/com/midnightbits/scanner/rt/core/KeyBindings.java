@@ -32,7 +32,7 @@ public interface KeyBindings {
         public int button() { return button; }
     }
 
-    MOUSE SCAN_BUTTON = MOUSE.BTN_4;
+    MOUSE SCAN_BUTTON = MOUSE.BTN_5;
     
-    MOUSE OPTIONS_BUTTON = MOUSE.BTN_5;
+    MOUSE OPTIONS_BUTTON = MOUSE.BTN_4;
 }
