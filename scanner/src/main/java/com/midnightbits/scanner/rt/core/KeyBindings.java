@@ -33,5 +33,6 @@ public interface KeyBindings {
     }
 
     MOUSE SCAN_BUTTON = MOUSE.BTN_4;
+    
     MOUSE OPTIONS_BUTTON = MOUSE.BTN_5;
 }
