@@ -1,0 +1,44 @@
+{
+	"schemaVersion": 1,
+	"id": "${id}",
+	"version": "${version}",
+	"name": "${title}",
+	"description": "${description}",
+	"authors": [
+		"mzdun"
+	],
+	"contributors" : [
+		"amaneog"
+	],
+	"contact": {
+		"homepage": "${modrinth}",
+		"sources": "${github}",
+		"issues": "${github}/issues"
+	},
+	"license": "MIT",
+	"icon": "assets/${id}/icon.png",
+	"environment": "client",
+	"entrypoints": {
+		"client": [
+			"com.midnightbits.scanner.fabric.ResourceScannerFabric"
+		],
+		"modmenu": [
+			"com.midnightbits.scanner.modmenu.ResourceScannerModMenu"
+		]
+	},
+	"custom": {
+		"modmenu": {
+			"links": {
+				"modmenu.github_releases": "${github}/releases",
+				"modmenu.modrinth": "${modrinth}"
+			}
+		}
+	},
+	"mixins": [],
+	"depends": {
+		"fabricloader": ">=0.16.0",
+		"minecraft": "${minecraft_dependency}",
+		"java": ">=21",
+		"fabric-api": "*"
+	}
+}
